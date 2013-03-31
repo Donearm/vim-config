@@ -1,0 +1,1 @@
+/mnt/c/Projects/Ubaryd/ubaryd.vim
