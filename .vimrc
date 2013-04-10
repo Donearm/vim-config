@@ -69,9 +69,9 @@ else
 endif
 
 " custom statusline
-if has('statusline')
-	let &stl="[%f]\ ft=%{&ff}\ t=%Y\ ascii=\%04.8b\ hex=\%04.4B\ %04l,%04v[%p%%]"
-endif
+"if has('statusline')
+"	let &stl="[%f]\ ft=%{&ff}\ t=%Y\ ascii=\%04.8b\ hex=\%04.4B\ %04l,%04v[%p%%]"
+"endif
 
 " switch syntax highlighting on when the terminal has colours and also 
 " highlights the last search pattern.
