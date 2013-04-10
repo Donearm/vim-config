@@ -409,11 +409,15 @@ noremap  :w!<CR>:!aspell -d en -x check %<CR>:e! %<CR>
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
+" Powerline
+set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
+
 " My bundles (including Vundle itself!)
 Bundle 'gmarik/vundle'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-dispatch'
 Bundle 'int3/vim-taglist-plus'
+Bundle 'Lokaltog/powerline'
 Bundle 'Donearm/WritingMode.vim'
 Bundle 'AutoTag'
 
