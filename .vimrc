@@ -54,6 +54,9 @@ if has("autocmd")
 	filetype plugin indent on
 	" resize splits when the window is resized
 	au VimResized * :wincmd =
+	" save fold before closing
+	au BufWinLeave * mkview
+	au BufWinEnter * silent! loadview
 endif
 
 " set a color scheme
@@ -77,10 +80,6 @@ if &t_Co > 2 || has("gui_running")
 	set hlsearch
 	set incsearch
 endif
-
-" save fold before closing
-au BufWinLeave * mkview
-au BufWinEnter * silent! loadview
 
 " Templates
 augroup Templates
@@ -370,7 +369,7 @@ nnoremap _Y :!echo ""> /tmp/.vi_tmp<CR><CR>:w! /tmp/.vi_tmp<CR>
 vnoremap _Y :w! /tmp/.vi_tmp<CR>
 nnoremap _P :r /tmp/.vi_tmp<CR>
 " Leader+q removes search hightlights
-nnoremap <leader>q :nohls<CR>
+"nnoremap <leader>q :nohls<CR>
 " Ctrl+hjkl to navigate in insert mode
 inoremap <C-j> <Down>
 inoremap <C-k> <Up>
