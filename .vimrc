@@ -256,6 +256,11 @@ if has("autocmd")
 		autocmd FileType html setlocal expandtab
 	augroup END
 
+	augroup gitcommits
+		" options for Git commit messages
+		autocmd FileType gitcommit setlocal textwidth=72
+	augroup END
+
 	if exists("+omnifunc")
 		augroup Omnifunctions
 			" enable function-complete for supported files
