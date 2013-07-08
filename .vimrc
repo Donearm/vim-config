@@ -414,15 +414,17 @@ noremap  :w!<CR>:!aspell -d en -x check %<CR>:e! %<CR>
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
-" Powerline
-set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
+" Vim-Airline
+let g:airline_left_sep=':'
+let g:airline_right_sep=':'
+let g:airline_theme='simple'
 
 " My bundles (including Vundle itself!)
 Bundle 'gmarik/vundle'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-dispatch'
 Bundle 'int3/vim-taglist-plus'
-Bundle 'Lokaltog/powerline'
+Bundle 'bling/vim-airline'
 Bundle 'Donearm/WritingMode.vim'
 Bundle 'AutoTag'
 
