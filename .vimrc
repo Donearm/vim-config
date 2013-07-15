@@ -417,7 +417,7 @@ call vundle#rc()
 " Vim-Airline
 let g:airline_left_sep=':'
 let g:airline_right_sep=':'
-let g:airline_theme='simple'
+let g:airline_theme='laederon'
 
 " My bundles (including Vundle itself!)
 Bundle 'gmarik/vundle'
