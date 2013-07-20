@@ -423,7 +423,8 @@ let g:airline_theme='laederon'
 Bundle 'gmarik/vundle'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-dispatch'
-Bundle 'int3/vim-taglist-plus'
+Bundle 'majutsushi/tagbar'
+Bundle 'jstemmer/gotags'
 Bundle 'bling/vim-airline'
 Bundle 'Donearm/WritingMode.vim'
 Bundle 'AutoTag'
@@ -447,7 +448,33 @@ endfunction
 
 noremap ,w :call Browser ()<CR>
 
-" open taglist
-nnoremap ,tag :TlistToggle<CR>
-" and close vi if it's the only window open
-let Tlist_Exit_OnlyWindow = 1
+" open tagbar
+nnoremap ,tag :TagbarToggle<CR>
+" Set up gotags with tagbar
+let g:tagbar_type_go = {
+    \ 'ctagstype' : 'go',
+    \ 'kinds'     : [
+        \ 'p:package',
+        \ 'i:imports:1',
+        \ 'c:constants',
+        \ 'v:variables',
+        \ 't:types',
+        \ 'n:interfaces',
+        \ 'w:fields',
+        \ 'e:embedded',
+        \ 'm:methods',
+        \ 'r:constructor',
+        \ 'f:functions'
+    \ ],
+    \ 'sro' : '.',
+    \ 'kind2scope' : {
+        \ 't' : 'ctype',
+        \ 'n' : 'ntype'
+    \ },
+    \ 'scope2kind' : {
+        \ 'ctype' : 't',
+        \ 'ntype' : 'n'
+    \ },
+    \ 'ctagsbin'  : 'gotags',
+    \ 'ctagsargs' : '-sort -silent'
+\ }
