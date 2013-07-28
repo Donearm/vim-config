@@ -408,8 +408,8 @@ inoremap ,, <Esc>
 hi SpellBad term=reverse ctermfg=white ctermbg=darkred guifg=#FFFFFF guibg=#7F0000 gui=underline
 
 " Aspell checking
-noremap  :w!<CR>:!aspell -d it -x check %<CR>:e! %<CR>
-noremap  :w!<CR>:!aspell -d en -x check %<CR>:e! %<CR>
+noremap <leader>I :w!<CR>:!aspell -d it -x check %<CR>:e! %<CR>
+noremap <leader>E :w!<CR>:!aspell -d en -x check %<CR>:e! %<CR>
 
 " Vundle
 set rtp+=~/.vim/bundle/vundle/
