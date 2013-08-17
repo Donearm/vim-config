@@ -87,6 +87,7 @@ augroup Templates
 	au BufNewFile *.tex 0r ~/.vim/skel/tex.skel | normal G
 	au BufNewFile *.lua 0r ~/.vim/skel/lua.skel | normal G
 	au BufNewFile *.asm 0r ~/.vim/skel/assembler.skel | normal G
+	au BufNewFile *.go 0r ~/.vim/skel/go.skel | normal G
 augroup END
 
 "
