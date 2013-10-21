@@ -419,6 +419,7 @@ call vundle#rc()
 " Vim-Airline
 let g:airline_left_sep=':'
 let g:airline_right_sep=':'
+let g:airline_detect_whitespace=0
 let g:airline_theme='laederon'
 
 " My bundles (including Vundle itself!)
