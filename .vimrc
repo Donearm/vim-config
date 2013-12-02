@@ -419,8 +419,19 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 " Vim-Airline
-let g:airline_left_sep=':'
-let g:airline_right_sep=':'
+if !exists('g:airline_symbols')
+	let g:airline_symbols = {}
+endif
+let g:airline_left_sep='»'
+let g:airline_left_sep='▶'
+let g:airline_right_sep='«'
+let g:airline_right_sep='◀'
+let g:airline_symbols.linenr='¶'
+let g:airline_symbols.branch='↝'
+let g:airline_symbols.paste = '∥'
+let g:airline_symbols.paste = 'ᵽ'
+let g:airline_symbols.paste = 'Ƥ'
+let g:airline_symbols.whitespace = 'Ξ'
 let g:airline_detect_whitespace=0
 let g:airline_theme='laederon'
 
