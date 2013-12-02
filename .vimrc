@@ -206,6 +206,7 @@ if has("autocmd")
 
 	augroup C
 		autocmd FileType c setlocal cindent
+		autocmd FileType c setlocal noexpandtab
 		autocmd FileType c ab #i #include
 		autocmd FileType c ab #d #define
 	augroup END
