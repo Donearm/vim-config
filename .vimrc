@@ -256,6 +256,7 @@ if has("autocmd")
 	augroup Html
 		" options for html files
 		autocmd FileType html setlocal expandtab
+		autocmd FileType html setlocal shiftwidth=2
 	augroup END
 
 	augroup gitcommits
