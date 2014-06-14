@@ -217,6 +217,13 @@ if has("autocmd")
 		autocmd FileType ruby setlocal textwidth=80 
 	augroup END
 
+	augroup Go
+		" options for Go files
+		autocmd FileType go setlocal textwidth=80
+		autocmd FileType go nnoremap <leader>b :!go build %<CR>
+		autocmd FileType go nnoremap <leader>r :!go run %<CR>
+	augroup END
+
 	augroup Markdown
 		"" options for markdown files
 		autocmd FileType markdown setlocal textwidth=80 spell
