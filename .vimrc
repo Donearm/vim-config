@@ -223,6 +223,7 @@ if has("autocmd")
 		autocmd FileType go nnoremap <leader>b :!go build %<CR>
 		autocmd FileType go nnoremap <leader>r :!go run %<CR>
 		autocmd BufWritePost *.go silent! !ctags -R &
+		autocmd FileType go set makeprg=go\ build\ %
 	augroup END
 
 	augroup Markdown
