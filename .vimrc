@@ -222,6 +222,7 @@ if has("autocmd")
 		autocmd FileType go setlocal textwidth=80
 		autocmd FileType go nnoremap <leader>b :!go build %<CR>
 		autocmd FileType go nnoremap <leader>r :!go run %<CR>
+		autocmd BufWritePost *.go silent! !ctags -R &
 	augroup END
 
 	augroup Markdown
