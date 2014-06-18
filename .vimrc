@@ -233,6 +233,12 @@ if has("autocmd")
 		autocmd FileType markdown nnoremap <leader>_ i_<Esc>ea_<Esc>
 	augroup END
 
+	augroup Json
+		"" options for json files
+		" Pretty-print current JSON file
+		autocmd FileType json nnoremap <leader>jp :!json_pp < %<CR> 
+	augroup END
+
 	augroup Java
 		" options for java files
 		autocmd FileType java set shiftwidth=4
