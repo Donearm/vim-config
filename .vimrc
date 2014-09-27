@@ -62,8 +62,8 @@ endif
 " set a color scheme
 if &t_Co == 256 || &t_Co == 88
 	set t_Co=256		" number of colors in terminal, default=88
-	"color ubaryd
-	color laederon
+	color ubaryd
+	"color laederon
 else
 	color desert
 endif
@@ -448,7 +448,7 @@ let g:airline_symbols.paste = 'ᵽ'
 let g:airline_symbols.paste = 'Ƥ'
 let g:airline_symbols.whitespace = 'Ξ'
 let g:airline_detect_whitespace=0
-let g:airline_theme='laederon'
+let g:airline_theme='ubaryd'
 
 " My bundles (including Vundle itself!)
 Bundle 'gmarik/vundle'
