@@ -237,6 +237,7 @@ if has("autocmd")
 		"" options for json files
 		" Pretty-print current JSON file
 		autocmd FileType json nnoremap <leader>jp :!json_pp < %<CR> 
+		autocmd FileType json setlocal textwidth=0
 	augroup END
 
 	augroup Java
