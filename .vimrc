@@ -50,6 +50,24 @@ set undoreload=1000		" maximum number of lines to save for undo on a buffer relo
 " set various tags' files
 set tags+=~/.vim/tags/*/tags
 
+" Vundle
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" My bundles (including Vundle itself!)
+Plugin 'gmarik/Vundle.vim'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-dispatch'
+Plugin 'majutsushi/tagbar'
+Plugin 'jstemmer/gotags'
+Plugin 'bling/vim-airline'
+Plugin 'ryanss/vim-hackernews'
+Plugin 'Donearm/WritingMode.vim'
+Plugin 'AutoTag'
+
+" end Vundle part
+call vundle#end()
+
 if has("autocmd")
 	filetype plugin on
 	filetype plugin indent on
@@ -430,9 +448,6 @@ hi SpellBad term=reverse ctermfg=white ctermbg=darkred guifg=#FFFFFF guibg=#7F00
 noremap <leader>I :w!<CR>:!aspell -d it -x check %<CR>:e! %<CR>
 noremap <leader>E :w!<CR>:!aspell -d en -x check %<CR>:e! %<CR>
 
-" Vundle
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
 
 " Vim-Airline
 if !exists('g:airline_symbols')
@@ -450,17 +465,6 @@ let g:airline_symbols.paste = 'Ƥ'
 let g:airline_symbols.whitespace = 'Ξ'
 let g:airline_detect_whitespace=0
 let g:airline_theme='ubaryd'
-
-" My bundles (including Vundle itself!)
-Plugin 'gmarik/vundle'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-dispatch'
-Plugin 'majutsushi/tagbar'
-Plugin 'jstemmer/gotags'
-Plugin 'bling/vim-airline'
-Plugin 'ryanss/vim-hackernews'
-Plugin 'Donearm/WritingMode.vim'
-Plugin 'AutoTag'
 
 " open link in the current row in the browser
 function! Browser ()
