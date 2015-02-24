@@ -305,15 +305,15 @@ if has("autocmd")
 	if exists("+omnifunc")
 		augroup Omnifunctions
 			" enable function-complete for supported files
-			autocmd FileType html,markdown set omnifunc=htmlcomplete#CompleteTags
-			autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-			autocmd FileType lua set omnifunc=luacomplete#Complete
-			autocmd FileType java set omnifunc=javacomplete#Complete
-			autocmd FileType javascript set omnifunc=javascript#Complete
-			autocmd FileType ruby set omnifunc=rubycomplete#Complete
-			autocmd FileType python set omnifunc=pythoncomplete#Complete
+			autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+			autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+			autocmd FileType lua setlocal omnifunc=luacomplete#Complete
+			autocmd FileType java setlocal omnifunc=javacomplete#Complete
+			autocmd FileType javascript setlocal omnifunc=javascript#Complete
+			autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+			autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 			autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-			autocmd FileType c set omnifunc=ccomplete#Complete
+			autocmd FileType c setlocal omnifunc=ccomplete#Complete
 			" use syntax complete if nothing else available
 			autocmd FileType * if &omnifunc == "" |
 						\	setlocal omnifunc=syntaxcomplete#Complete |
