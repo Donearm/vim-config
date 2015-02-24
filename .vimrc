@@ -250,6 +250,11 @@ if has("autocmd")
 		autocmd FileType markdown nnoremap <leader>_ i_<Esc>ea_<Esc>
 	augroup END
 
+	augroup Javascript
+		"" options for javascript files
+		autocmd FileType javascript setlocal ts=4 sw=4
+	augroup END
+
 	augroup Json
 		"" options for json files
 		" Pretty-print current JSON file
