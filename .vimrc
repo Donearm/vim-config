@@ -309,6 +309,7 @@ if has("autocmd")
 			autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 			autocmd FileType lua set omnifunc=luacomplete#Complete
 			autocmd FileType java set omnifunc=javacomplete#Complete
+			autocmd FileType javascript set omnifunc=javascript#Complete
 			autocmd FileType ruby set omnifunc=rubycomplete#Complete
 			autocmd FileType python set omnifunc=pythoncomplete#Complete
 			autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
