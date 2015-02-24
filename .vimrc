@@ -264,10 +264,10 @@ if has("autocmd")
 
 	augroup Java
 		" options for java files
-		autocmd FileType java set shiftwidth=4
-		autocmd FileType java set cindent
-		autocmd FileType java set foldmethod=marker
-		autocmd FileType java set foldmarker={,}
+		autocmd FileType java setlocal sw=4
+		autocmd FileType java setlocal cindent
+		autocmd FileType java setlocal foldmethod=marker
+		autocmd FileType java setlocal foldmarker={,}
 		autocmd FileType java let java_comment_strings=1
 		autocmd FileType java let java_highlight_all=1
 		autocmd FileType java let java_highlight_debug=1
