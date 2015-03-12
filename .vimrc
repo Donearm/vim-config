@@ -468,7 +468,6 @@ let g:airline_symbols.paste = '∥'
 let g:airline_symbols.paste = 'ᵽ'
 let g:airline_symbols.paste = 'Ƥ'
 let g:airline_symbols.whitespace = 'Ξ'
-let g:airline_detect_whitespace=0
 let g:airline_theme='ubaryd'
 
 " open link in the current row in the browser
