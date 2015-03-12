@@ -12,7 +12,7 @@ set shiftwidth=4
 set smarttab
 set softtabstop=4
 set tabstop=4
-set modeline 
+set modeline
 set modelines=3
 set listchars=tab:»\ ,trail:·,nbsp:·
 set nobackup
@@ -91,7 +91,7 @@ endif
 "	let &stl="[%f]\ ft=%{&ff}\ t=%Y\ ascii=\%04.8b\ hex=\%04.4B\ %04l,%04v[%p%%]"
 "endif
 
-" switch syntax highlighting on when the terminal has colours and also 
+" switch syntax highlighting on when the terminal has colours and also
 " highlights the last search pattern.
 if &t_Co > 2 || has("gui_running")
 	syntax on
@@ -116,7 +116,7 @@ if has("autocmd")
 	autocmd FileType mail call Mail_AutoCmd()
 endif
 " set mail fileformat for mails, mboxes and news messages
-au BufRead,BufNewFile /tmp/mutt-*,~/Maildir/.*,.followup*,.article* :set ft=mail 
+au BufRead,BufNewFile /tmp/mutt-*,~/Maildir/.*,.followup*,.article* :set ft=mail
 " various functions for mail and news
 function Mail_AutoCmd()
 	silent! %s/^\(>*\)\s\+>/\1>/g " wrong quoting
@@ -174,7 +174,7 @@ if has("autocmd")
 		autocmd FileType python set foldmethod=indent
 		autocmd FileType python set foldlevel=99
 
-		" Show current python class and method name or function name 
+		" Show current python class and method name or function name
 		" (with <Leader>? or :EchoPythonLocation)
 		" based on:
 		" http://vim.1045645.n5.nabble.com/editing-Python-files-how-to-keep-track-of-class-membership-td1189290.html
@@ -232,7 +232,7 @@ if has("autocmd")
 	augroup Ruby
 		" some options for ruby files
 		autocmd FileType ruby setlocal tabstop=2
-		autocmd FileType ruby setlocal textwidth=80 
+		autocmd FileType ruby setlocal textwidth=80
 	augroup END
 
 	augroup Go
@@ -258,7 +258,7 @@ if has("autocmd")
 	augroup Json
 		"" options for json files
 		" Pretty-print current JSON file
-		autocmd FileType json nnoremap <leader>jp :!json_pp < %<CR> 
+		autocmd FileType json nnoremap <leader>jp :!json_pp < %<CR>
 		autocmd FileType json setlocal textwidth=0
 	augroup END
 
@@ -484,7 +484,7 @@ function! Browser ()
 	if line==""
 		let line = "\"" . (expand("%:p")) . "\""
 		:endif
-		exec ':silent !firefox ' . line 
+		exec ':silent !firefox ' . line
 endfunction
 
 noremap ,w :call Browser ()<CR>
