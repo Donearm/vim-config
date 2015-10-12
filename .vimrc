@@ -3,7 +3,7 @@ set history=50
 set title			" show a nice title
 set showcmd			" display incomplete commands
 set showmode
-set showmatch
+set showmatch		" highlights matching parenthesis/braces
 set smartindent
 set textwidth=72
 set ruler
