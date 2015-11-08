@@ -148,152 +148,116 @@ noremap <leader>noheader :0<leader>/^$/d
 "
 " --- PROGRAMMING ---
 if has("autocmd")
-	augroup Python
-		" some options for python files
-		autocmd FileType python setlocal textwidth=0
-		autocmd FileType python setlocal tabstop=4
-		autocmd FileType python setlocal expandtab " spaces instead of tabs
-		autocmd FileType python setlocal softtabstop=4 " treat 4 spaces as a tab
-		" call pydoc with the name of the python module from which we want
-		" help
-		:command -nargs=+ Pyhelp :call ShowPydoc("<args>")
-		function ShowPydoc(module, ...)
-			let fPath = "/tmp/pyHelp_" . a:module . ".pydoc"
-			execute ":!pydoc " . a:module . " > " . fPath
-			execute ":sp " .fPath
-		endfunction
-		" folding follow indentation
-		autocmd FileType python set foldmethod=indent
-		autocmd FileType python set foldlevel=99
+	" some options for python files
+	autocmd FileType python setlocal textwidth=0
+	autocmd FileType python setlocal tabstop=4
+	autocmd FileType python setlocal expandtab " spaces instead of tabs
+	autocmd FileType python setlocal softtabstop=4 " treat 4 spaces as a tab
+	" call pydoc with the name of the python module from which we want
+	" help
+	:command -nargs=+ Pyhelp :call ShowPydoc("<args>")
+	function ShowPydoc(module, ...)
+		let fPath = "/tmp/pyHelp_" . a:module . ".pydoc"
+		execute ":!pydoc " . a:module . " > " . fPath
+		execute ":sp " .fPath
+	endfunction
+	" folding follow indentation
+	autocmd FileType python set foldmethod=indent
+	autocmd FileType python set foldlevel=99
 
-		" Show current python class and method name or function name
-		" (with <Leader>? or :EchoPythonLocation)
-		" based on:
-		" http://vim.1045645.n5.nabble.com/editing-Python-files-how-to-keep-track-of-class-membership-td1189290.html
-		function! s:get_last_python_class()
-			let l:retval = ""
-			let l:last_line_declaring_a_class = search('^\s*class', 'bnW')
-			let l:last_line_starting_with_a_word_other_than_class = search('^\ \(\<\)\@=\(class\)\@!', 'bnW')
-			if l:last_line_starting_with_a_word_other_than_class < l:last_line_declaring_a_class
-				let l:nameline = getline(l:last_line_declaring_a_class)
-				let l:classend = matchend(l:nameline, '\s*class\s\+')
-				let l:classnameend = matchend(l:nameline, '\s*class\s\+[A-Za-z0-9_]\+')
-				let l:retval = strpart(l:nameline, l:classend, l:classnameend-l:classend)
-			endif
-			return l:retval
-		endfunction
+	" Show current python class and method name or function name
+	" (with <Leader>? or :EchoPythonLocation)
+	" based on:
+	" http://vim.1045645.n5.nabble.com/editing-Python-files-how-to-keep-track-of-class-membership-td1189290.html
+	function! s:get_last_python_class()
+		let l:retval = ""
+		let l:last_line_declaring_a_class = search('^\s*class', 'bnW')
+		let l:last_line_starting_with_a_word_other_than_class = search('^\ \(\<\)\@=\(class\)\@!', 'bnW')
+		if l:last_line_starting_with_a_word_other_than_class < l:last_line_declaring_a_class
+			let l:nameline = getline(l:last_line_declaring_a_class)
+			let l:classend = matchend(l:nameline, '\s*class\s\+')
+			let l:classnameend = matchend(l:nameline, '\s*class\s\+[A-Za-z0-9_]\+')
+			let l:retval = strpart(l:nameline, l:classend, l:classnameend-l:classend)
+		endif
+		return l:retval
+	endfunction
 
-		function! s:get_last_python_def()
-			let l:retval = ""
-			let l:last_line_declaring_a_def = search('^\s*def', 'bnW')
-			let l:last_line_starting_with_a_word_other_than_def = search('^\ \(\<\)\@=\(def\)\@!', 'bnW')
-			if l:last_line_starting_with_a_word_other_than_def < l:last_line_declaring_a_def
-				let l:nameline = getline(l:last_line_declaring_a_def)
-				let l:defend = matchend(l:nameline, '\s*def\s\+')
-				let l:defnameend = matchend(l:nameline, '\s*def\s\+[A-Za-z0-9_]\+')
-				let l:retval = strpart(l:nameline, l:defend, l:defnameend-l:defend)
-			endif
-			return l:retval
-		endfunction
+	function! s:get_last_python_def()
+		let l:retval = ""
+		let l:last_line_declaring_a_def = search('^\s*def', 'bnW')
+		let l:last_line_starting_with_a_word_other_than_def = search('^\ \(\<\)\@=\(def\)\@!', 'bnW')
+		if l:last_line_starting_with_a_word_other_than_def < l:last_line_declaring_a_def
+			let l:nameline = getline(l:last_line_declaring_a_def)
+			let l:defend = matchend(l:nameline, '\s*def\s\+')
+			let l:defnameend = matchend(l:nameline, '\s*def\s\+[A-Za-z0-9_]\+')
+			let l:retval = strpart(l:nameline, l:defend, l:defnameend-l:defend)
+		endif
+		return l:retval
+	endfunction
 
-		function! s:compose_python_location()
-			let l:pyloc = s:get_last_python_class()
-			if !empty(pyloc)
-				let pyloc = pyloc . "."
-			endif
-			let pyloc = pyloc . s:get_last_python_def()
-			return pyloc
-		endfunction
+	function! s:compose_python_location()
+		let l:pyloc = s:get_last_python_class()
+		if !empty(pyloc)
+			let pyloc = pyloc . "."
+		endif
+		let pyloc = pyloc . s:get_last_python_def()
+		return pyloc
+	endfunction
 
-		function! <SID>EchoPythonLocation()
-			echo s:compose_python_location()
-		endfunction
+	function! <SID>EchoPythonLocation()
+		echo s:compose_python_location()
+	endfunction
 
-		command! PythonLocation :call <SID>EchoPythonLocation()
-		nnoremap <Leader>? :PythonLocation<CR>
-	augroup END
-
-	augroup C
-		autocmd FileType c setlocal cindent
-		autocmd FileType c setlocal noexpandtab
-		autocmd FileType c ab #i #include
-		autocmd FileType c ab #d #define
-	augroup END
-
-	augroup Ruby
-		" some options for ruby files
-		autocmd FileType ruby setlocal tabstop=2
-		autocmd FileType ruby setlocal textwidth=80
-	augroup END
-
-	augroup Go
-		" options for Go files
-		autocmd FileType go setlocal textwidth=80
-		autocmd FileType go nnoremap <leader>b :!go build %<CR>
-		autocmd FileType go nnoremap <leader>r :!go run %<CR>
-		autocmd BufWritePost *.go silent! !ctags -R &
-		autocmd FileType go set makeprg=go\ build\ %
-	augroup END
-
-	augroup Markdown
-		"" options for markdown files
-		autocmd FileType markdown setlocal textwidth=0
-		autocmd FileType markdown nnoremap <leader>* i**<Esc>ea**<Esc>
-		autocmd FileType markdown nnoremap <leader>_ i_<Esc>ea_<Esc>
-	augroup END
-
-	augroup Javascript
-		"" options for javascript files
-		autocmd FileType javascript setlocal ts=4 sw=4
-	augroup END
-
-	augroup Json
-		"" options for json files
-		" Pretty-print current JSON file
-		autocmd FileType json nnoremap <leader>jp :!json_pp < %<CR>
-		autocmd FileType json setlocal textwidth=0
-	augroup END
-
-	augroup Java
-		" options for java files
-		autocmd FileType java setlocal sw=4
-		autocmd FileType java setlocal cindent
-		autocmd FileType java setlocal foldmethod=marker
-		autocmd FileType java setlocal foldmarker={,}
-		autocmd FileType java let java_comment_strings=1
-		autocmd FileType java let java_highlight_all=1
-		autocmd FileType java let java_highlight_debug=1
-		autocmd FileType java let java_highlight_java_lang_ids=1
-		autocmd FileType java let java_ignore_javadoc=1
-		autocmd FileType java let java_highlight_functions=1
-		autocmd FileType java let java_mark_braces_in_parens_as_errors=1
-		autocmd FileType java let java_minlines=150
-	augroup END
-
-	augroup Lisp
-		" options for lisp files
-		autocmd FileType lisp setlocal expandtab
-		autocmd FileType lisp setlocal shiftwidth=2
-		autocmd FileType lisp setlocal tabstop=2
-		autocmd FileType lisp setlocal softtabstop=2
-	augroup END
-
-	augroup Haskell
-		" options for haskell files
-		autocmd FileType haskell setlocal expandtab tabstop=4 shiftwidth=4 textwidth=79
-	augroup END
-
-	augroup Html
-		" options for html files
-		autocmd FileType html setlocal expandtab
-		autocmd FileType html setlocal shiftwidth=2
-	augroup END
-
-	augroup gitcommits
-		" options for Git commit messages
-		autocmd FileType gitcommit setlocal textwidth=72
-	augroup END
-
+	command! PythonLocation :call <SID>EchoPythonLocation()
+	nnoremap <Leader>? :PythonLocation<CR>
+	autocmd FileType c setlocal cindent
+	autocmd FileType c setlocal noexpandtab
+	autocmd FileType c ab #i #include
+	autocmd FileType c ab #d #define
+	" some options for ruby files
+	autocmd FileType ruby setlocal tabstop=2
+	autocmd FileType ruby setlocal textwidth=80
+	" options for Go files
+	autocmd FileType go setlocal textwidth=80
+	autocmd FileType go nnoremap <leader>b :!go build %<CR>
+	autocmd FileType go nnoremap <leader>r :!go run %<CR>
+	autocmd BufWritePost *.go silent! !ctags -R &
+	autocmd FileType go set makeprg=go\ build\ %
+	"" options for markdown files
+	autocmd FileType markdown setlocal textwidth=0
+	autocmd FileType markdown nnoremap <leader>* i**<Esc>ea**<Esc>
+	autocmd FileType markdown nnoremap <leader>_ i_<Esc>ea_<Esc>
+	"" options for javascript files
+	autocmd FileType javascript setlocal ts=4 sw=4
+	"" options for json files
+	" Pretty-print current JSON file
+	autocmd FileType json nnoremap <leader>jp :!json_pp < %<CR>
+	autocmd FileType json setlocal textwidth=0
+	" options for java files
+	autocmd FileType java setlocal sw=4
+	autocmd FileType java setlocal cindent
+	autocmd FileType java setlocal foldmethod=marker
+	autocmd FileType java setlocal foldmarker={,}
+	autocmd FileType java let java_comment_strings=1
+	autocmd FileType java let java_highlight_all=1
+	autocmd FileType java let java_highlight_debug=1
+	autocmd FileType java let java_highlight_java_lang_ids=1
+	autocmd FileType java let java_ignore_javadoc=1
+	autocmd FileType java let java_highlight_functions=1
+	autocmd FileType java let java_mark_braces_in_parens_as_errors=1
+	autocmd FileType java let java_minlines=150
+	" options for lisp files
+	autocmd FileType lisp setlocal expandtab
+	autocmd FileType lisp setlocal shiftwidth=2
+	autocmd FileType lisp setlocal tabstop=2
+	autocmd FileType lisp setlocal softtabstop=2
+	" options for haskell files
+	autocmd FileType haskell setlocal expandtab tabstop=4 shiftwidth=4 textwidth=79
+	" options for html files
+	autocmd FileType html setlocal expandtab
+	autocmd FileType html setlocal shiftwidth=2
+	" options for Git commit messages
+	autocmd FileType gitcommit setlocal textwidth=72
 	if exists("+omnifunc")
 		augroup Omnifunctions
 			" enable function-complete for supported files
