@@ -1,45 +1,45 @@
-set nocompatible	"Really important option, must be first
-set history=50
+set nocompatible	" Really important option, must be first
+set history=50		" remember 50 lines of history
 set title			" show a nice title
 set showcmd			" display incomplete commands
-set showmode
+set showmode		" display which mode we are in
 set showmatch		" highlights matching parenthesis/braces
-set smartindent
-set textwidth=72
-set ruler
-set backspace=2
-set shiftwidth=4
-set smarttab
-set softtabstop=4
-set tabstop=4
-set modeline
-set modelines=3
-set listchars=tab:»\ ,trail:·,nbsp:·
-set nobackup
-set nowritebackup
-set backupdir=/tmp
-set whichwrap=b,s
-set viminfo='1000,f1,\"500
+set smartindent		" smart autoindenting
+set textwidth=72	" default line length is 72 characters
+set ruler			" show line and colum number of the cursor position
+set backspace=2		" as backspace=indent,eol,start
+set shiftwidth=4	" number of spaces of indentation
+set smarttab		" use whitespaces instead of tabs at beginning of line
+set softtabstop=4	" number of spaces for tabs when editing
+set tabstop=4		" number of spaces that a tab in the file counts for
+set modeline		" enable modeline
+set modelines=3		" number of lines checked for set commands
+set listchars=tab:»\ ,trail:·,nbsp:· " which characters to show when :list is enabled
+set nobackup		" no backup files
+set nowritebackup	
+set backupdir=/tmp	" backup directory
+set whichwrap=b,s	" backspace and space keys can move to next/previous line
+set viminfo='1000,f1,\"500	" enable writing viminfo files
 " disabled, this are the digraphs made with {char} <backspace> {char}
 "set digraph
-set noerrorbells
-set autoread " auto reload files changed outside vim (but not if deleted)
-set laststatus=2
-set encoding=utf-8
-set fileencoding=utf-8
-set termencoding=utf-8
+set noerrorbells	" no sounds or flashing when errors
+set autoread		" auto reload files changed outside vim (but not if deleted)
+set laststatus=2	" always have statuslines for every window
+set encoding=utf-8	" default encoding
+set fileencoding=utf-8	" encoding for file in current buffer
+set termencoding=utf-8	" encoding used for terminal
 set hidden				" hide buffers when not displayed
 set pastetoggle=<leader>tp	" switch to paste mode with ,tp
-set spelllang=en,it,es,pt
+set spelllang=en,it,es,pt	" spell languages (english,italian,spanish,portuguese)
 set formatoptions=tcqw	" some formatting options, see fo-table
 set wildmenu			" enable ctrl-n and ctrl-p to scroll through matches
-set wildmode=longest,list,full
+set wildmode=longest,list,full " complete longest common string first, then list alternatives, then full matches
 set wildignore=*.sw?,*.bak,*.pyc,*.luac,*.png,*.gif,*.jpg,*.zip,*.jar,*.rar	" ignore those file extensions when Tab completing
-set printoptions=header:0,paper:A4,left:0.5in,right:0.5in,top:0.5in,bottom:0.5in
-set pumheight=20
-set ttyfast
-set cryptmethod=blowfish2 	" incompatible with Vim 7.3 and earlier
-let mapleader=","		" comma as <leader>
+set printoptions=header:0,paper:A4,left:0.5in,right:0.5in,top:0.5in,bottom:0.5in " options for hardprinting
+set pumheight=20	" number of items to show in popup menu for insert mode completion
+set ttyfast			" tell ViM we have a fast terminal
+set cryptmethod=blowfish2 	" crypt with blowfish2. Incompatible with Vim 7.3 and earlier
+let mapleader=","	" comma as <leader>
 
 "persistent undo
 set undodir=~/.vim/undodir
