@@ -16,7 +16,6 @@ set modeline		" enable modeline
 set modelines=3		" number of lines checked for set commands
 set listchars=tab:»\ ,trail:·,nbsp:· " which characters to show when :list is enabled
 set nobackup		" no backup files
-set nowritebackup	
 set backupdir=/tmp	" backup directory
 set whichwrap=b,s	" backspace and space keys can move to next/previous line
 set viminfo='1000,f1,\"500	" enable writing viminfo files
