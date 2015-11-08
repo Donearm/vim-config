@@ -19,8 +19,6 @@ set nobackup		" no backup files
 set backupdir=/tmp	" backup directory
 set whichwrap=b,s	" backspace and space keys can move to next/previous line
 set viminfo='1000,f1,\"500	" enable writing viminfo files
-" disabled, this are the digraphs made with {char} <backspace> {char}
-"set digraph
 set noerrorbells	" no sounds or flashing when errors
 set autoread		" auto reload files changed outside vim (but not if deleted)
 set laststatus=2	" always have statuslines for every window
@@ -84,11 +82,6 @@ if &t_Co == 256 || &t_Co == 88
 else
 	color desert
 endif
-
-" custom statusline
-"if has('statusline')
-"	let &stl="[%f]\ ft=%{&ff}\ t=%Y\ ascii=\%04.8b\ hex=\%04.4B\ %04l,%04v[%p%%]"
-"endif
 
 " switch syntax highlighting on when the terminal has colours and also
 " highlights the last search pattern.
@@ -218,7 +211,6 @@ if has("autocmd")
 
 		command! PythonLocation :call <SID>EchoPythonLocation()
 		nnoremap <Leader>? :PythonLocation<CR>
-
 	augroup END
 
 	augroup C
@@ -424,8 +416,6 @@ inoremap <C-j> <Down>
 inoremap <C-k> <Up>
 inoremap <C-l> <Right>
 inoremap <C-h> <Left>
-" Convert to html a markdown text
-nnoremap <leader>mh :%!/mnt/d/Script/markdownitall.lua %<CR>
 
 " Add parentheses around current word; use it from the beginning
 " of the word
