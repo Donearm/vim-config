@@ -229,6 +229,7 @@ if has("autocmd")
 	autocmd FileType markdown nnoremap <leader>_ i_<Esc>ea_<Esc>
 	"" options for javascript files
 	autocmd FileType javascript setlocal ts=4 sw=4
+	autocmd BufWritePost *.js silent! !ctags -R &
 	"" options for json files
 	" Pretty-print current JSON file
 	autocmd FileType json nnoremap <leader>jp :!json_pp < %<CR>
