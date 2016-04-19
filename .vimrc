@@ -58,6 +58,7 @@ Plugin 'tpope/vim-dispatch'
 Plugin 'majutsushi/tagbar'
 Plugin 'jstemmer/gotags'
 Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'Donearm/WritingMode.vim'
 Plugin 'AutoTag'
 
