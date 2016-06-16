@@ -59,6 +59,7 @@ Plugin 'majutsushi/tagbar'
 Plugin 'jstemmer/gotags'
 Plugin 'bling/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'sourcegraph/sourcegraph-vim'
 Plugin 'Donearm/WritingMode.vim'
 Plugin 'AutoTag'
 
@@ -426,6 +427,9 @@ let g:airline_symbols.paste = 'ᵽ'
 let g:airline_symbols.paste = 'Ƥ'
 let g:airline_symbols.whitespace = 'Ξ'
 let g:airline_theme='ubaryd'
+
+" Sourcegraph
+let g:SOURCEGRAPH_GOBIN="/usr/bin/go"
 
 " open link in the current row in the browser
 function! Browser ()
