@@ -61,6 +61,7 @@ Plugin 'bling/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'Donearm/WritingMode.vim'
 Plugin 'AutoTag'
+Plugin 'johngrib/vim-game-code-break'
 
 " end Vundle part
 call vundle#end()
