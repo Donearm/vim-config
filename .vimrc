@@ -327,8 +327,8 @@ function! CComment()
 endfunction
 
 function! LuaComment()
-	noremap - :s/^/--/<CR>
-	noremap _ :s/^\s*--//<CR>
+	noremap - :s/^/--/ \| :nohls<CR>
+	noremap _ :s/^\s*--// \| :nohls<CR>
 	set comments=:--
 	" trick vim by remapping the comment to 'X' and comment again, so
 	" preventing the comment to override the current indentation
