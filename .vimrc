@@ -62,6 +62,11 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'Donearm/WritingMode.vim'
 Plugin 'AutoTag'
 Plugin 'johngrib/vim-game-code-break'
+Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
+
+" Allow writing JSX syntax in JS files
+let g:jsx_ext_required = 0
 
 " end Vundle part
 call vundle#end()
