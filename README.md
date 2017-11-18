@@ -1,4 +1,5 @@
-#Vim Configuration
+
+##Vim Configuration
 
 What the header says. Install with:
 
