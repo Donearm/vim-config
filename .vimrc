@@ -53,20 +53,28 @@ call vundle#begin()
 
 " My bundles (including Vundle itself!)
 Plugin 'gmarik/Vundle.vim'
+
+" generic programming plugins
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-dispatch'
-Plugin 'majutsushi/tagbar'
-Plugin 'jstemmer/gotags'
 Plugin 'bling/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'Donearm/WritingMode.vim'
+Plugin 'majutsushi/tagbar'
 Plugin 'AutoTag'
+
+" Golang plugins
+Plugin 'jstemmer/gotags'
+
+" Writing plugins
+Plugin 'Donearm/WritingMode.vim'
+
+" Web Development plugins
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 Plugin 'mattn/emmet-vim'
 
-" Allow writing JSX syntax in JS files
+" Allow writing JSX syntax in JS files (for vim-jsx)
 let g:jsx_ext_required = 0
 
 " end Vundle part
