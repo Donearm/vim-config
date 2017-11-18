@@ -53,6 +53,7 @@ call vundle#begin()
 
 " My bundles (including Vundle itself!)
 Plugin 'gmarik/Vundle.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-dispatch'
 Plugin 'majutsushi/tagbar'
@@ -61,9 +62,9 @@ Plugin 'bling/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'Donearm/WritingMode.vim'
 Plugin 'AutoTag'
-Plugin 'johngrib/vim-game-code-break'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
+Plugin 'mattn/emmet-vim'
 
 " Allow writing JSX syntax in JS files
 let g:jsx_ext_required = 0
@@ -264,6 +265,11 @@ if has("autocmd")
 	" options for html files
 	autocmd FileType html setlocal expandtab
 	autocmd FileType html setlocal shiftwidth=2
+	let g:user_emmet_install_global = 0	" for emmet-vim
+	autocmd FileType css EmmetInstall	" for emmet-vim
+	" options for css files
+	let g:user_emmet_install_global = 0 " for emmet-vim
+	autocmd FileType css EmmetInstall	" for emmet-vim
 	" options for Git commit messages
 	autocmd FileType gitcommit setlocal textwidth=72
 	if exists("+omnifunc")
