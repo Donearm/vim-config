@@ -114,6 +114,7 @@ augroup Templates
 	au BufNewFile *.lua 0r ~/.vim/skel/lua.skel | normal G
 	au BufNewFile *.asm 0r ~/.vim/skel/assembler.skel | normal G
 	au BufNewFile *.go 0r ~/.vim/skel/go.skel | normal G
+	au BufNewFile README.md 0r ~/.vim/skel/README.md | normal G
 augroup END
 
 "
