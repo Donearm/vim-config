@@ -62,6 +62,7 @@ Plugin 'bling/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'majutsushi/tagbar'
 Plugin 'AutoTag'
+Plugin 'lilydjwg/colorizer'
 
 " Golang plugins
 Plugin 'jstemmer/gotags'
@@ -431,6 +432,9 @@ hi SpellBad term=reverse ctermfg=white ctermbg=darkred guifg=#FFFFFF guibg=#7F00
 noremap <leader>I :w!<CR>:!aspell -d it -x check %<CR>:e! %<CR>
 noremap <leader>E :w!<CR>:!aspell -d en -x check %<CR>:e! %<CR>
 
+" Colorizer plugin
+let g:colorizer_startup = 0 " not autostart it on startup
+let g:colorizer_maxlines = 1000 " limit to max 1000 lines as it can be very slow to render on terminals otherwise
 
 " Vim-Airline
 if !exists('g:airline_symbols')
