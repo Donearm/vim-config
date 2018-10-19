@@ -280,6 +280,8 @@ if has("autocmd")
 	" options for css files
 	let g:user_emmet_install_global = 0 " for emmet-vim
 	autocmd FileType css EmmetInstall	" for emmet-vim
+	autocmd FileType css :silent ColorToggle	" for colorizer
+	autocmd FileType css let g:colorizer_maxlines=1000 " for colorizer
 	" options for Git commit messages
 	autocmd FileType gitcommit setlocal textwidth=72
 	if exists("+omnifunc")
