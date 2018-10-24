@@ -1,1 +1,1 @@
-/home/gianluca/c/Projects/Laederon/colors/laederon.vim
+/mnt/documents/c/Projects/Laederon/colors/laederon.vim

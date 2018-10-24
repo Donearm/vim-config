@@ -1,1 +1,1 @@
-/home/gianluca/c/Projects/Ubaryd/colors/ubaryd.vim
+/mnt/documents/c/Projects/Ubaryd/colors/ubaryd.vim
