@@ -239,7 +239,7 @@ if has("autocmd")
 	autocmd FileType go setlocal textwidth=80
 	autocmd FileType go nnoremap <leader>b :!go build %<CR>
 	autocmd FileType go nnoremap <leader>r :!go run %<CR>
-	autocmd BufWritePost *.go silent! !ctags -R &
+	autocmd BufWritePost *.go silent! !ctags -R --quiet=yes &
 	autocmd FileType go set makeprg=go\ build\ %
 	"" options for markdown files
 	autocmd FileType markdown setlocal textwidth=0
@@ -247,7 +247,6 @@ if has("autocmd")
 	autocmd FileType markdown nnoremap <leader>_ i_<Esc>ea_<Esc>
 	"" options for javascript files
 	autocmd FileType javascript setlocal ts=4 sw=4
-	autocmd BufWritePost *.js silent! !ctags -R &
 	"" options for json files
 	" Pretty-print current JSON file
 	autocmd FileType json nnoremap <leader>jp :!json_pp < %<CR>
