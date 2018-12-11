@@ -228,6 +228,19 @@ if has("autocmd")
 
 	command! PythonLocation :call <SID>EchoPythonLocation()
 	nnoremap <Leader>? :PythonLocation<CR>
+
+	" Simple re-format for minified Javascript
+	" by https://coderwall.com/tapanpandita
+	command! UnMinify call UnMinify()
+	function! UnMinify()
+		%s/{\ze[^\r\n]/{\r/g
+		%s/){/) {/g
+		%s/};\?\ze[^\r\n]/\0\r/g
+		%s/;\ze[^\r\n]/;\r/g
+		%s/[^\s]\zs[=&|]\+\ze[^\s]/ \0 /g
+		normal ggVG=
+	endfunction
+
 	autocmd FileType c setlocal cindent
 	autocmd FileType c setlocal noexpandtab
 	autocmd FileType c ab #i #include
@@ -322,6 +335,7 @@ if has("autocmd")
 	" add vim options at the end of every script (currently not working)
 	"autocmd BufWritePost * if getline(1) =~ "^#!/" && if getline($) =~ "^# vi" | silent :$s/^/# vim: set ft=sh tw=0:/ | endif
 endif
+
 "
 " comments' functions
 function! ShellComment()
