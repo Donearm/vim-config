@@ -121,6 +121,12 @@ augroup END
 "
 " --- MAIL ---
 "
+" A few snippets for emails
+let g:MailJobRefusal="While I am sad that I won't get a chance to work
+\ for you, it would greatly help me for the future if you could be so kind
+\ to tell me where in my experiences and resume I am more lacking so I
+\ could concentrate on improving these specific areas. Thank you."
+let g:MailFormalBye="Best Regards,\nGianluca Fiore"
 if has("autocmd")
 	autocmd FileType mail set fo=tcrqw textwidth=72 spell
 	autocmd FileType mail call Mail_AutoCmd()
@@ -138,6 +144,9 @@ endfunction
 "
 " some mappings
 "
+" insert the mail snippets as above
+noremap <leader>mjob :put=MailJobRefusal
+noremap <leader>mbye :put=MailFormalBye
 " delete rows with just spaces
 noremap <leader>del :%s/^\s\+$//g
 " delete empty rows (not even with spaces)
