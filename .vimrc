@@ -174,6 +174,12 @@ noremap <leader>noheader :0<leader>/^$/d
 " --- MAIL END ---
 "
 " --- PROGRAMMING ---
+
+" remove Wordpress tags from a file
+noremap <leader>nowordpress :g/^<!--/d
+" remove html tags from a file
+noremap <leader>notags :%s/<\_.\{-1,\}>//g
+
 if has("autocmd")
 	" some options for python files
 	autocmd FileType python setlocal textwidth=0
