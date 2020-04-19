@@ -347,6 +347,9 @@ if has("autocmd")
 	autocmd BufRead *.txt set tw=78
 	" No limit of characters for line in csv files
 	autocmd BufRead *.csv set tw=0
+	" enable colorizer plugin for files ending in .theme (supposedly 
+	" they may contain RGB color codes)
+	autocmd BufRead *.theme :silent ColorToggle
 	" make every script executable
 	autocmd BufWritePost * if getline(1) =~ "^#!/" | silent exe "!chmod u+x <afile>" | endif
 	" add vim options at the end of every script (currently not working)
