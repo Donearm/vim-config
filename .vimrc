@@ -37,6 +37,7 @@ set pumheight=20	" number of items to show in popup menu for insert mode complet
 set ttyfast			" tell ViM we have a fast terminal
 set cryptmethod=blowfish2 	" crypt with blowfish2. Incompatible with Vim 7.3 and earlier
 let mapleader=","	" comma as <leader>
+set lazyredraw " don't redraw while executing macros (good for performance)
 
 "persistent undo
 set undodir=~/.vim/undodir
@@ -347,7 +348,7 @@ if has("autocmd")
 	autocmd BufRead *.txt set tw=78
 	" No limit of characters for line in csv files
 	autocmd BufRead *.csv set tw=0
-	" enable colorizer plugin for files ending in .theme (supposedly 
+	" enable colorizer plugin for files ending in .theme (supposedly
 	" they may contain RGB color codes)
 	autocmd BufRead *.theme :silent ColorToggle
 	" make every script executable
@@ -464,6 +465,7 @@ inoremap ,, <Esc>
 hi SpellBad term=reverse ctermfg=white ctermbg=darkred guifg=#FFFFFF guibg=#7F0000 gui=underline
 
 " Aspell checking
+map <leader>ss :setlocal spell!<CR>
 noremap <leader>I :w!<CR>:!aspell -d it -x check %<CR>:e! %<CR>
 noremap <leader>E :w!<CR>:!aspell -d en -x check %<CR>:e! %<CR>
 
