@@ -27,7 +27,7 @@ set fileencoding=utf-8	" encoding for file in current buffer
 set termencoding=utf-8	" encoding used for terminal
 set hidden				" hide buffers when not displayed
 set pastetoggle=<leader>tp	" switch to paste mode with ,tp
-set spelllang=en,it,es,pt	" spell languages (english,italian,spanish,portuguese)
+set spelllang=en,it,es,pl	" spell languages (english,italian,spanish,polish)
 set formatoptions=tcqw	" some formatting options, see fo-table
 set wildmenu			" enable ctrl-n and ctrl-p to scroll through matches
 set wildmode=longest,list,full " complete longest common string first, then list alternatives, then full matches
