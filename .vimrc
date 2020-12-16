@@ -348,6 +348,9 @@ if has("autocmd")
 	autocmd BufRead *.txt set tw=78
 	" No limit of characters for line in csv files
 	autocmd BufRead *.csv set tw=0
+	" options for YAML files
+	autocmd BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml foldmethod=indent
+	autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 	" enable colorizer plugin for files ending in .theme (supposedly
 	" they may contain RGB color codes)
 	autocmd BufRead *.theme :silent ColorToggle
