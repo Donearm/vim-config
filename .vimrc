@@ -15,8 +15,7 @@ set tabstop=4		" number of spaces that a tab in the file counts for
 set modeline		" enable modeline
 set modelines=3		" number of lines checked for set commands
 set listchars=tab:»\ ,trail:·,nbsp:· " which characters to show when :list is enabled
-set nobackup		" no backup files
-set backupdir=/tmp	" backup directory
+set backupdir=~/.backup,/tmp	" backup directory
 set whichwrap=b,s	" backspace and space keys can move to next/previous line
 set viminfo='1000,f1,\"500	" enable writing viminfo files
 set noerrorbells	" no sounds or flashing when errors
@@ -38,6 +37,7 @@ set ttyfast			" tell ViM we have a fast terminal
 set cryptmethod=blowfish2 	" crypt with blowfish2. Incompatible with Vim 7.3 and earlier
 let mapleader=","	" comma as <leader>
 set lazyredraw " don't redraw while executing macros (good for performance)
+set termguicolors
 
 "persistent undo
 set undodir=~/.vim/undodir
@@ -48,39 +48,9 @@ set undoreload=1000		" maximum number of lines to save for undo on a buffer relo
 " set various tags' files
 set tags+=~/.vim/tags/*/tags
 
-" Vundle
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-" My bundles (including Vundle itself!)
-Plugin 'gmarik/Vundle.vim'
-
-" generic programming plugins
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-dispatch'
-Plugin 'bling/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'majutsushi/tagbar'
-Plugin 'AutoTag'
-Plugin 'lilydjwg/colorizer'
-
-" Golang plugins
-Plugin 'jstemmer/gotags'
-
-" Writing plugins
-Plugin 'Donearm/WritingMode.vim'
-
-" Web Development plugins
-Plugin 'pangloss/vim-javascript'
-Plugin 'mxw/vim-jsx'
-Plugin 'mattn/emmet-vim'
-
-" Allow writing JSX syntax in JS files (for vim-jsx)
-let g:jsx_ext_required = 0
-
-" end Vundle part
-call vundle#end()
+" Hexokinase variables
+let g:Hexokinase_highlighters = [ 'sign_column' ]
+let g:Hexokinase_ftEnabled = ['css', 'html', 'javascript']
 
 if has("autocmd")
 	filetype plugin on
@@ -95,8 +65,8 @@ endif
 " set a color scheme
 if &t_Co == 256 || &t_Co == 88
 	set t_Co=256		" number of colors in terminal, default=88
-	color ubaryd
-	"color laederon
+	"color ubaryd
+	color laederon
 else
 	color desert
 endif
@@ -303,13 +273,11 @@ if has("autocmd")
 	" options for html files
 	autocmd FileType html setlocal expandtab
 	autocmd FileType html setlocal shiftwidth=2
-	let g:user_emmet_install_global = 0	" for emmet-vim
-	autocmd FileType css EmmetInstall	" for emmet-vim
+	" options for gopass secret files (this disable saving temp files to
+	" not leak any info)
+	au BufNewFile,BufRead /dev/shm/gopass.* setlocal noswapfile nobackup noundofile
 	" options for css files
-	let g:user_emmet_install_global = 0 " for emmet-vim
-	autocmd FileType css EmmetInstall	" for emmet-vim
-	autocmd FileType css :silent ColorToggle	" for colorizer
-	autocmd FileType css let g:colorizer_maxlines=1000 " for colorizer
+	autocmd FileType css :silent HexokinaseToggle	" for Hexokinase
 	" options for Svelte files
 	autocmd BufNewFile,BufRead *.svelte		setlocal filetype=html
 	" options for Git commit messages
@@ -351,9 +319,9 @@ if has("autocmd")
 	" options for YAML files
 	autocmd BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml foldmethod=indent
 	autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
-	" enable colorizer plugin for files ending in .theme (supposedly
+	" enable Hexokinase plugin for files ending in .theme (supposedly
 	" they may contain RGB color codes)
-	autocmd BufRead *.theme :silent ColorToggle
+	autocmd BufRead *.theme :silent HexokinaseToggle
 	" make every script executable
 	autocmd BufWritePost * if getline(1) =~ "^#!/" | silent exe "!chmod u+x <afile>" | endif
 	" add vim options at the end of every script (currently not working)
@@ -472,10 +440,6 @@ map <leader>ss :setlocal spell!<CR>
 noremap <leader>I :w!<CR>:!aspell -d it -x check %<CR>:e! %<CR>
 noremap <leader>E :w!<CR>:!aspell -d en -x check %<CR>:e! %<CR>
 
-" Colorizer plugin
-let g:colorizer_startup = 0 " not autostart it on startup
-let g:colorizer_maxlines = 1000 " limit to max 1000 lines as it can be very slow to render on terminals otherwise
-
 " Vim-Airline
 if !exists('g:airline_symbols')
 	let g:airline_symbols = {}
@@ -494,7 +458,7 @@ let g:airline_symbols.paste = 'Ƥ'
 let g:airline_symbols.maxlinenr = ''
 let g:airline_symbols.whitespace = 'Ξ'
 let g:airline_symbols.readonly = ''
-let g:airline_theme='ubaryd'
+let g:airline_theme='laederon'
 
 " open link in the current row in the browser
 function! Browser ()
@@ -514,34 +478,3 @@ function! Browser ()
 	endfunction
 
 	noremap ,w :call Browser ()<CR>
-
-	" open tagbar
-	nnoremap ,tag :TagbarToggle<CR>
-	" Set up gotags with tagbar
-	let g:tagbar_type_go = {
-				\ 'ctagstype' : 'go',
-				\ 'kinds'     : [
-				\ 'p:package',
-				\ 'i:imports:1',
-				\ 'c:constants',
-				\ 'v:variables',
-				\ 't:types',
-				\ 'n:interfaces',
-				\ 'w:fields',
-				\ 'e:embedded',
-				\ 'm:methods',
-				\ 'r:constructor',
-				\ 'f:functions'
-				\ ],
-				\ 'sro' : '.',
-				\ 'kind2scope' : {
-				\ 't' : 'ctype',
-				\ 'n' : 'ntype'
-				\ },
-				\ 'scope2kind' : {
-				\ 'ctype' : 't',
-				\ 'ntype' : 'n'
-				\ },
-				\ 'ctagsbin'  : 'gotags',
-				\ 'ctagsargs' : '-sort -silent'
-				\ }
