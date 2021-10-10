@@ -461,7 +461,7 @@ let g:airline_symbols.paste = 'Ƥ'
 let g:airline_symbols.maxlinenr = ''
 let g:airline_symbols.whitespace = 'Ξ'
 let g:airline_symbols.readonly = ''
-let g:airline_theme='laederon'
+let g:airline_theme='ubaryd'
 
 " open link in the current row in the browser
 function! Browser ()
