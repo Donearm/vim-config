@@ -66,7 +66,7 @@ endif
 if &t_Co == 256 || &t_Co == 88
 	set t_Co=256		" number of colors in terminal, default=88
 	"color ubaryd
-	color laederon
+	"color laederon
 else
 	color desert
 endif
@@ -238,7 +238,7 @@ if has("autocmd")
 	autocmd FileType go setlocal textwidth=80
 	autocmd FileType go nnoremap <leader>b :!go build %<CR>
 	autocmd FileType go nnoremap <leader>r :!go run %<CR>
-	autocmd BufWritePost *.go silent! !ctags -R --quiet=yes &
+	"autocmd BufWritePost *.go silent! !ctags -R --quiet=yes &
 	autocmd FileType go set makeprg=go\ build\ %
 	"" options for markdown files
 	autocmd FileType markdown setlocal textwidth=0
@@ -319,6 +319,9 @@ if has("autocmd")
 	" options for YAML files
 	autocmd BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml foldmethod=indent
 	autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+	" options for TOML files
+	autocmd BufNewFile,BufReadPost *.toml set filetype=toml foldmethod=indent
+	autocmd FileType toml setlocal ts=4 sts=4 sw=4 expandtab
 	" enable Hexokinase plugin for files ending in .theme (supposedly
 	" they may contain RGB color codes)
 	autocmd BufRead *.theme :silent HexokinaseToggle
