@@ -48,9 +48,43 @@ set undoreload=1000		" maximum number of lines to save for undo on a buffer relo
 " set various tags' files
 set tags+=~/.vim/tags/*/tags
 
+" Plugins
 " Hexokinase variables
 let g:Hexokinase_highlighters = [ 'sign_column' ]
 let g:Hexokinase_ftEnabled = ['css', 'html', 'javascript']
+" vim-wordy configuration
+let g:wordy#ring = [
+			\ 'weak',
+			\ ['being', 'passive-voice', ],
+			\ 'business-jargon',
+			\ 'weasel',
+			\ 'puffery',
+			\ ['problematic', 'redundant', ],
+			\ ['colloquial', 'idiomatic', 'similies', ],
+			\ 'art-jargon',
+			\ ['contractions', 'opinion', 'vague-time', 'said-synonyms', ],
+			\ 'adjectives',
+			\ 'adverbs',
+			\ ]
+" Vim-Airline
+if !exists('g:airline_symbols')
+	let g:airline_symbols = {}
+endif
+let g:airline_left_sep='»'
+let g:airline_left_sep='▶'
+let g:airline_right_sep='«'
+let g:airline_right_sep='◀'
+let g:airline_symbols.linenr = 'ƪ'
+let g:airline_symbols.linenr = 'ƚ'
+let g:airline_symbols.linenr = 'Ł'
+let g:airline_symbols.branch='↝'
+let g:airline_symbols.paste = 'Ⴜ'
+let g:airline_symbols.paste = 'ᵽ'
+let g:airline_symbols.paste = 'Ƥ'
+let g:airline_symbols.maxlinenr = ''
+let g:airline_symbols.whitespace = 'Ξ'
+let g:airline_symbols.readonly = ''
+let g:airline_theme='ubaryd'
 
 if has("autocmd")
 	filetype plugin on
@@ -442,26 +476,6 @@ hi SpellBad term=reverse ctermfg=white ctermbg=darkred guifg=#FFFFFF guibg=#7F00
 map <leader>ss :setlocal spell!<CR>
 noremap <leader>I :w!<CR>:!aspell -d it -x check %<CR>:e! %<CR>
 noremap <leader>E :w!<CR>:!aspell -d en -x check %<CR>:e! %<CR>
-
-" Vim-Airline
-if !exists('g:airline_symbols')
-	let g:airline_symbols = {}
-endif
-let g:airline_left_sep='»'
-let g:airline_left_sep='▶'
-let g:airline_right_sep='«'
-let g:airline_right_sep='◀'
-let g:airline_symbols.linenr = 'ƪ'
-let g:airline_symbols.linenr = 'ƚ'
-let g:airline_symbols.linenr = 'Ł'
-let g:airline_symbols.branch='↝'
-let g:airline_symbols.paste = 'Ⴜ'
-let g:airline_symbols.paste = 'ᵽ'
-let g:airline_symbols.paste = 'Ƥ'
-let g:airline_symbols.maxlinenr = ''
-let g:airline_symbols.whitespace = 'Ξ'
-let g:airline_symbols.readonly = ''
-let g:airline_theme='ubaryd'
 
 " open link in the current row in the browser
 function! Browser ()
