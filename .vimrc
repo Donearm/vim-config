@@ -495,3 +495,7 @@ function! Browser ()
 	endfunction
 
 	noremap ,w :call Browser ()<CR>
+
+" abbreviations
+iab teh the
+iab strenght strength
