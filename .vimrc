@@ -52,20 +52,7 @@ set tags+=~/.vim/tags/*/tags
 " Hexokinase variables
 let g:Hexokinase_highlighters = [ 'sign_column' ]
 let g:Hexokinase_ftEnabled = ['css', 'html', 'javascript']
-" vim-wordy configuration
-let g:wordy#ring = [
-			\ 'weak',
-			\ ['being', 'passive-voice', ],
-			\ 'business-jargon',
-			\ 'weasel',
-			\ 'puffery',
-			\ ['problematic', 'redundant', ],
-			\ ['colloquial', 'idiomatic', 'similies', ],
-			\ 'art-jargon',
-			\ ['contractions', 'opinion', 'vague-time', 'said-synonyms', ],
-			\ 'adjectives',
-			\ 'adverbs',
-			\ ]
+
 " Vim-Airline
 if !exists('g:airline_symbols')
 	let g:airline_symbols = {}
