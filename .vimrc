@@ -499,3 +499,4 @@ function! Browser ()
 " abbreviations
 iab teh the
 iab strenght strength
+source ~/.vim/wordlist.vim
