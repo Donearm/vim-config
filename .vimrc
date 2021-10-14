@@ -504,10 +504,10 @@ source ~/.vim/wordlist.vim
 
 highlight TechWordsToAvoid ctermbg=darkmagenta ctermfg=white
 function! MatchTechWordsToAvoid()
-	match TechWordsToAvoid /\c\<\(obviously\|basically\|simply\|of\scourse\|clearly\|just\|everyone\sknows\|however\|so,\|easy\|he\sor\sshe\)\>/
+	match TechWordsToAvoid /\c\<\(obviously\|basically\|simply\|of\scourse\|clearly\|just\|everyone\sknows\|however\|\s`so,\|easy\|he\sor\sshe\)\>/
 endfunction
 
-autocmd BufWinEnter * match TechWordsToAvoid /\cobviously\|basically\|simply\|of\scourse\|clearly\|just\|everyone\sknows\|however,\|so,\|easy\|he\sor\sshe/
-autocmd InsertEnter * match TechWordsToAvoid /\cobviously\|basically\|simply\|of\scourse\|clearly\|just\|everyone\sknows\|however,\|so,\|easy\|he\sor\sshe/
-autocmd InsertLeave * match TechWordsToAvoid /\cobviously\|basically\|simply\|of\scourse\|clearly\|just\|everyone\sknows\|however,\|so,\|easy\|he\sor\sshe/
+autocmd BufWinEnter * match TechWordsToAvoid /\cobviously\|basically\|simply\|of\scourse\|clearly\|just\|everyone\sknows\|however,\|\sso,\|easy\|he\sor\sshe/
+autocmd InsertEnter * match TechWordsToAvoid /\cobviously\|basically\|simply\|of\scourse\|clearly\|just\|everyone\sknows\|however,\|\sso,\|easy\|he\sor\sshe/
+autocmd InsertLeave * match TechWordsToAvoid /\cobviously\|basically\|simply\|of\scourse\|clearly\|just\|everyone\sknows\|however,\|\sso,\|easy\|he\sor\sshe/
 autocmd BufWinLeave * call clearmatches()
