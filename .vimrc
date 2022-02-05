@@ -82,6 +82,7 @@ let g:pencil#mode_indicators = {'hard': '␍', 'auto': 'ª', 'soft': '⤸', 'off
 if has("autocmd")
 	filetype plugin on
 	filetype plugin indent on
+	set omnifunc=syntaxcomplete#Complete
 	" resize splits when the window is resized
 	au VimResized * :wincmd =
 	" save fold before closing
