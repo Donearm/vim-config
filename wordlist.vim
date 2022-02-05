@@ -1,5 +1,5 @@
 " Autocorrect word list from Office XP
-" Created by: Gabriel Zachmann (zach@cs.uni-bonn.de) 
+" Created by: Gabriel Zachmann (zach@cs.uni-bonn.de)
 " Website: web.informatik.uni-bonn.de/~zach/vim/
 "
 " Facilitated by: Robert Hicks (bobh@hslda.org)
@@ -9,7 +9,7 @@
 " the Office XP ones that were on my system.
 "
 " I just put a line in my _vimrc file like so:
-" 
+"
 " source $VIMRUNTIME/plugin/wordlist.vim
 
 iab abbout about
@@ -717,7 +717,7 @@ iab thigsn things
 iab thisyear this year
 iab thme them
 iab thna than
-iab thna than 
+iab thna than
 iab thne then
 iab thnigs things
 iab thnig thing
@@ -774,7 +774,7 @@ iab wherre where
 iab whic which
 iab whihc which
 iab whta what
-iab whta what 
+iab whta what
 iab wief wife
 iab wierd weird
 iab wihch which
