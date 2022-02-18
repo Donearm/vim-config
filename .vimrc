@@ -93,7 +93,7 @@ endif
 " set a color scheme
 if &t_Co == 256 || &t_Co == 88
 	set t_Co=256		" number of colors in terminal, default=88
-	"color ubaryd
+	color ubaryd
 	"color laederon
 else
 	color desert
