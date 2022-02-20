@@ -670,6 +670,7 @@ iab stopry story
 iab stoyr story
 iab stpo stop
 iab strentgh strength
+iab strength strength
 iab stroy story
 iab struggel struggle
 iab strugle struggle

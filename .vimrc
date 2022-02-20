@@ -491,8 +491,6 @@ function! Browser ()
 	noremap ,w :call Browser ()<CR>
 
 " abbreviations
-iab teh the
-iab strenght strength
 source ~/.vim/wordlist.vim
 
 " Highlight words to avoid in tech writing
