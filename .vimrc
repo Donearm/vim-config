@@ -141,39 +141,10 @@ function Mail_AutoCmd()
 	silent! %s/^[>]\+$// " empty quoted rows
 endfunction
 "
-" some mappings
-"
-" insert the mail snippets as above
-noremap <leader>mjob :put=MailJobRefusal
-noremap <leader>mbye :put=MailFormalBye
-" delete rows with just spaces
-noremap <leader>del :%s/^\s\+$//g
-" delete empty rows (not even with spaces)
-noremap <leader>delempty :%s/^\n//g
-" delete empty quoted rows
-nnoremap <leader>ceql :%s/^[>]\+$//
-nnoremap <leader>cqel :%s/^> \s*$//<CR>^M
-vnoremap <leader>ceql :s/^[><C-I> ]\+$//
-" delete quoted rows with only spaces
-noremap <leader>qesl :%s/^[>]\s\+$//g
-" substitute a dot with various spaces with a single dot and 2 spaces
-vnoremap <leader>dotsub :s/\.\+ \+/.  /g
-" substitute multiple spaces with just one
-nnoremap <leader>ksr :%s/  \+/ /g
-vnoremap <leader>ksr :s/  \+/ /g
-" substitute various consecutive empty rows with just one
-noremap <leader>emptyblock :g/^$/<leader>/./-j
-" as above but with rows of only spaces
-noremap <leader>Sbl :g/^\s*$/<leader>/\S/-j
-" regroup multiple Re:
-noremap <leader>re :%s/Subject: \(Re\?: \)\+/Subject: Re: /g<CR>
-" delete every header
-noremap <leader>noheader :0<leader>/^$/d
-"
 " --- MAIL END ---
 "
 " --- PROGRAMMING ---
-
+"
 " remove Wordpress tags from a file
 noremap <leader>nowordpress :g/^<!--/d
 " remove html tags from a file
@@ -270,7 +241,7 @@ if has("autocmd")
 	autocmd FileType go set makeprg=go\ build\ %
 	"" options for markdown files
 	autocmd FileType markdown setlocal textwidth=0
-	autocmd FileType markdown nnoremap <leader>* i**<Esc>ea**<Esc>
+	autocmd FileType markdown nnoremap <leader>+ i**<Esc>ea**<Esc>
 	autocmd FileType markdown nnoremap <leader>_ i_<Esc>ea_<Esc>
 	"" options for javascript files
 	autocmd FileType javascript setlocal ts=4 sw=4
@@ -455,9 +426,6 @@ cabbrev Wq wq
 nnoremap <leader>u o<Esc>"*p<Esc>o<Esc>
 " same as above but without a trailing new line
 nnoremap <leader>U o<Esc>"*p<Esc>
-
-" uppercase current word and return to insert mode
-inoremap <c-u> <Esc>viwUi
 "
 " two , in insert mode to exit insertion instead of Esc
 inoremap ,, <Esc>
@@ -468,8 +436,8 @@ hi SpellBad term=reverse ctermfg=white ctermbg=darkred guifg=#FFFFFF guibg=#7F00
 
 " Aspell checking
 map <leader>ss :setlocal spell!<CR>
-noremap <leader>I :w!<CR>:!aspell -d it -x check %<CR>:e! %<CR>
-noremap <leader>E :w!<CR>:!aspell -d en -x check %<CR>:e! %<CR>
+noremap <leader>si :w!<CR>:!aspell -d it -x check %<CR>:e! %<CR>
+noremap <leader>se :w!<CR>:!aspell -d en -x check %<CR>:e! %<CR>
 
 " open link in the current row in the browser
 function! Browser ()
