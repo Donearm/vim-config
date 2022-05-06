@@ -72,6 +72,7 @@ let g:airline_symbols.maxlinenr = ''
 let g:airline_symbols.whitespace = 'Ξ'
 let g:airline_symbols.readonly = ''
 let g:airline_theme='ubaryd'
+let g:airline#extensions#wordcount#filetypes = '\vasciidoc|help|mail|markdown|markdown.pandoc|org|rst|tex|text'
 
 " vim-pencil
 autocmd FileType markdown call pencil#init()
