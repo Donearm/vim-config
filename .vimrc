@@ -53,6 +53,10 @@ set tags+=~/.vim/tags/*/tags
 let g:Hexokinase_highlighters = [ 'sign_column' ]
 let g:Hexokinase_ftEnabled = ['css', 'html', 'javascript']
 
+" vim-beancount
+inoremap . .<C-\><C-O>:AlignCommodity<CR>
+let b:beancount_root="~/.ledger/accounts.beancount"
+
 " Vim-Airline
 if !exists('g:airline_symbols')
 	let g:airline_symbols = {}
