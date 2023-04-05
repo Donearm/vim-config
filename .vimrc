@@ -83,6 +83,10 @@ autocmd FileType text call pencil#init()
 let g:airline_section_x = '%{PencilMode()}' " enable pencil indicator in vim-airline statusbar
 let g:pencil#mode_indicators = {'hard': '␍', 'auto': 'ª', 'soft': '⤸', 'off': '',}
 
+" Built-in netrw file explorer options
+let g:netrw_liststyle = 3
+let g:netrw_sort_options = "i"	" ignore case when sorting files
+
 if has("autocmd")
 	filetype plugin on
 	filetype plugin indent on
