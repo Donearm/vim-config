@@ -409,7 +409,9 @@ endif
 " --- VARIOUS STUFF ---
 "
 "  all the text on a single row
-noremap <leader>line  :%s/\n/ /g
+noremap <leader>line	:%s/\n/ /g
+" remove double (or more) newlines
+noremap <leader>mn		:%s/\(\n\n\)\+/  /g
 " save the buffer content in a temporary file with "_Y and import it
 " back in another with "_P
 nnoremap _Y :!echo ""> /tmp/.vi_tmp<CR><CR>:w! /tmp/.vi_tmp<CR>
@@ -429,6 +431,9 @@ nnoremap <leader>( i(<Esc>ea)<Esc>
 
 " command line abbreviations
 cabbrev Wq wq
+
+" clean a youtube transcript from timestamps
+noremap <leader>yt :%s/:\?\(\d\)\+//g
 
 " paste the content of clipboard on a new line, leave a empty line after
 " it and return in normal mode
